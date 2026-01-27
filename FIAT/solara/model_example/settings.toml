@@ -1,0 +1,9 @@
+[model]
+model_type = "geom"
+
+[[exposure.geom]]
+file = "exposure/osm_buildings.fgb"
+srs = "EPSG:4326"
+
+[vulnerability]
+file = "vulnerability/curves.csv"
