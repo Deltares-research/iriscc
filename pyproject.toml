@@ -61,7 +61,8 @@ default = { features = ["dev"] }
 
 [tool.pixi.tasks]
 clean-notebooks = "jupyter nbconvert --to notebook --inplace **/*.ipynb"
-run-notebooks = "jupyter nbconvert --execute --to notebook --inplace **/*.ipynb"
+all-notebooks = "jupyter nbconvert --execute --to notebook --inplace **/*.ipynb"
+run-notebook = { cmd="jupyter nbconvert --execute --to notebook --inplace {{ NOTEBOOK }}", args=["NOTEBOOK"] }
 
 [tool.pixi.feature.dev.tasks]
 install-precommit = "pre-commit install"

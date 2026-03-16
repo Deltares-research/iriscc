@@ -43,10 +43,16 @@ Pixi will create a reproducible environment based on the `pyproject.toml` and `p
 All notebooks in the repository can be executed using the Pixi task:
 
 ```
-pixi run run-notebooks
+pixi run all-notebooks
 ```
 
 This runs every notebook in the repository and updates them with executed outputs.
+
+Alternatively, run a single notebook with:
+
+```
+pixi run run-notebook <notebook path>
+```
 
 ## Cleaning notebook outputs
 
