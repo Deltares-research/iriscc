@@ -46,7 +46,7 @@ dependencies = [
     "jupyter",
 ]
 [project.optional-dependencies]
-dev = ["ruff", "pre-commit"]
+dev = ["ruff", "pre-commit", "nbstripout"]
 
 [tool.pixi.workspace]
 name = "iriscc"

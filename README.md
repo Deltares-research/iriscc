@@ -57,4 +57,3 @@ pixi run clean-notebooks
 ```
 
 This clears cell outputs and execution counters to keep notebooks clean for version control.
-
