@@ -11,9 +11,9 @@ The main short term goal is to create a robust setup for use of the notebooks an
 ## Features
 
 1. [ ] Write user oriented documentation
-    a. [ ] start documentation setup
-    b. [ ] describe installation
-    c. [ ] write an introduction
+    a. [x] start documentation setup
+    b. [x] describe installation
+    c. [x] write an introduction
     d. [ ] describe initial steps - quickstart
     e. [ ] ...
 2. [ ] Improve ease of use
@@ -26,4 +26,4 @@ The main short term goal is to create a robust setup for use of the notebooks an
 
 ## Status
 - [x] some documentation available at https://deltares-research.github.io/iriscc/
-- [x] pixi install is working 
+- [x] pixi install is working a locally and using a manual install on d4science.

@@ -54,6 +54,16 @@ pixi install
 
 Pixi resolves the environment from `pyproject.toml` and `pixi.lock` for a fully reproducible setup.
 
+## Register the Jupyter kernel
+
+To make the Pixi environment available as a kernel in JupyterLab, register it once after installation:
+
+```bash
+pixi run python -m ipykernel install --user --name iriscc --display-name "Python (iriscc)"
+```
+
+After refreshing JupyterLab, `Python (iriscc)` will appear in the kernel selector. Select it when opening any of the notebooks to ensure all packages are available.
+
 ## Running a notebook
 
 Start a notebook directly using Pixi, for example:

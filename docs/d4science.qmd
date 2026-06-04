@@ -14,4 +14,33 @@ Once your account is activated, log in to the D4Science portal at [iriscc.d4scie
 The Flooding Risk demonstrator software is not yet pre-installed on D4Science. Once inside JupyterLab, follow the [installation instructions](installation.qmd) to install the environment manually before running any notebooks.
 :::
 
+## Registering the Jupyter kernel
+
+After installing the environment, register it as a kernel so JupyterLab can find it. Open a terminal in JupyterLab and run:
+
+```bash
+pixi run python -m ipykernel install --user --name flood-demo --display-name "Python (flood-demo)"
+```
+
+Refresh JupyterLab and select `Python (flood-demo)` as the kernel when opening a notebook.
+
+::: {.callout-important}
+For Solara widgets and maps to render correctly, the D4Science JupyterLab server requires the following packages to be installed in its server-side Python environment. If widgets fail to load, ask the D4Science admins to run:
+
+```bash
+conda install -c conda-forge ipyvuetify ipyvue ipyleaflet
+```
+:::
+
+::: {.callout-tip}
+If you see errors about missing extensions (e.g. `ipyvuetify` or `ipyvue`) after selecting the kernel, try this sequence:
+
+1. Open the notebook and select the `Python (flood-demo)` kernel
+2. Close the notebook
+3. Reopen the notebook
+
+The notebook will now start directly with the correct kernel and the extension errors should be gone.
+:::
+
+
 
