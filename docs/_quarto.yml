@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "iriscc"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: installation.qmd
+        text: Installation
+      - href: quickstart.qmd
+        text: Quickstart
+  sidebar:
+    style: "docked"
+    contents:
+      - section: "Getting started"
+        contents:
+          - index.qmd
+          - installation.qmd
+          - quickstart.qmd
+      - section: "Models"
+        contents:
+          - models/sfincs.qmd
+          - models/fiat.qmd
+          - models/dhydro.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true

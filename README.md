@@ -1,5 +1,7 @@
 # iriscc
 
+[![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://deltares-research.github.io/iriscc/)
+
 `iriscc` is a collection of hydrological modelling workflows, notebooks, and demonstrators built around the HydroMT ecosystem. The repository contains example setups and exploratory notebooks for model preparation, execution, and visualization using tools such as HydroMT, SFINCS, FIAT, and D-HYDRO.
 
 The notebooks in this repository serve both as documentation and executable examples of the workflows.

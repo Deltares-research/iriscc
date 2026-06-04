@@ -1,0 +1,74 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "iriscc",
+    "section": "",
+    "text": "iriscc is a collection of hydrological modelling workflows, notebooks, and demonstrators built around the HydroMT ecosystem, covering SFINCS, FIAT, and D-HYDRO.",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "iriscc"
+    ]
+  },
+  {
+    "objectID": "quickstart.html",
+    "href": "quickstart.html",
+    "title": "Quickstart",
+    "section": "",
+    "text": "…",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "Quickstart"
+    ]
+  },
+  {
+    "objectID": "models/fiat.html",
+    "href": "models/fiat.html",
+    "title": "FIAT",
+    "section": "",
+    "text": "…",
+    "crumbs": [
+      "Home",
+      "Models",
+      "FIAT"
+    ]
+  },
+  {
+    "objectID": "installation.html",
+    "href": "installation.html",
+    "title": "Installation",
+    "section": "",
+    "text": "…",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "Installation"
+    ]
+  },
+  {
+    "objectID": "models/dhydro.html",
+    "href": "models/dhydro.html",
+    "title": "D-HYDRO",
+    "section": "",
+    "text": "…",
+    "crumbs": [
+      "Home",
+      "Models",
+      "D-HYDRO"
+    ]
+  },
+  {
+    "objectID": "models/sfincs.html",
+    "href": "models/sfincs.html",
+    "title": "SFINCS",
+    "section": "",
+    "text": "…",
+    "crumbs": [
+      "Home",
+      "Models",
+      "SFINCS"
+    ]
+  }
+]
