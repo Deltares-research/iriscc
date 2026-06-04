@@ -2,66 +2,14 @@
 
 [![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://deltares-research.github.io/iriscc/)
 
+[IRISCC](https://www.iriscc.eu/) (Integrating Research Infrastructures for the Study of Climate Change) is a European consortium of 14 major research infrastructures across 22 countries, funded by the European Union (Grant Agreement 101131261). Its goal is to empower society to strengthen resilience to climate change risks by providing researchers, policymakers, and practitioners with access to climate-risk data, tools, and modelling facilities.
+
+This repository contains the software behind the IRISCC **Flooding Risk demonstrator**, which addresses the risk to coastal regions from flooding caused by sea-level rise and storm surges. The demonstrator models storm events and sea-level changes to help stakeholders in insurance, finance, and infrastructure evaluate their exposure and make climate-resilient investment decisions.
+
 `iriscc` is a collection of hydrological modelling workflows, notebooks, and demonstrators built around the HydroMT ecosystem. The repository contains example setups and exploratory notebooks for model preparation, execution, and visualization using tools such as HydroMT, SFINCS, FIAT, and D-HYDRO.
 
 The notebooks in this repository serve both as documentation and executable examples of the workflows.
 
-## Environment setup
+## Developer guide
 
-This project uses Pixi to manage dependencies and development tasks.
-
-### Install Pixi
-
-Pixi can be installed using the official installer.
-
-Linux / macOS:
-
-```
-curl -fsSL https://pixi.sh/install.sh | bash
-```
-
-Windows (PowerShell):
-
-```
-powershell -ExecutionPolicy ByPass -c "irm https://pixi.sh/install.ps1 | iex"
-```
-
-After installation, restart your shell so the `pixi` command becomes available.
-
-### Install the project environment
-
-Clone the repository and install the environment:
-
-```
-git clone https://github.com/Deltares-research/iriscc.git
-cd iriscc
-pixi install
-```
-
-Pixi will create a reproducible environment based on the `pyproject.toml` and `pixi.lock` files.
-
-## Running notebooks
-
-All notebooks in the repository can be executed using the Pixi task:
-
-```
-pixi run all-notebooks
-```
-
-This runs every notebook in the repository and updates them with executed outputs.
-
-Alternatively, run a single notebook with:
-
-```
-pixi run run-notebook <notebook path>
-```
-
-## Cleaning notebook outputs
-
-To remove outputs from all notebooks:
-
-```
-pixi run clean-notebooks
-```
-
-This clears cell outputs and execution counters to keep notebooks clean for version control.
+See the [developer guide](https://deltares-research.github.io/iriscc/developers.html) for instructions on setting up the environment, running notebooks, and linting.

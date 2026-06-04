@@ -20,6 +20,9 @@ website:
           - index.qmd
           - installation.qmd
           - quickstart.qmd
+      - section: "Development"
+        contents:
+          - developers.qmd
       - section: "Models"
         contents:
           - models/sfincs.qmd
