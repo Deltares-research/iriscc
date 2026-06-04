@@ -2,6 +2,8 @@
 title: "Installation"
 ---
 
+This page provides instructions for installing the project environment and running the notebooks locally on your machine (or on a remote server that you have access to). We also offer a cloud-based environment on D4SCIENCE where you can run the notebooks without any local installation. Please check our [D4SCIENCE guide](d4science.qmd) for more details on the D4SCIENCE environment and how to access it.
+
 This project uses [Pixi](https://pixi.prefix.dev) to manage dependencies. Install Pixi first, then install the project environment.
 
 ## Install Pixi
@@ -52,8 +54,17 @@ pixi install
 
 Pixi resolves the environment from `pyproject.toml` and `pixi.lock` for a fully reproducible setup.
 
-## Keeping Pixi up to date
+## Running a notebook
+
+Start a notebook directly using Pixi, for example:
 
 ```bash
-pixi self-update
+pixi run jupyter notebook FIAT/solara/IRISCC_solara_widget_FIAT.ipynb
 ```
+
+This will launch Jupyter Notebook with the FIAT widget notebook and opens it in your default web browser. Next, run the notebook cells and scroll down to the FIAT widget. You can select the model name, path, domain, continent and country to run a flood risk assessment. Your screen should look similar to the image below.
+
+![FIAT main screen](figures/fiat_main_screen.png){fig-alt="FIAT notebook interface showing a map of the Humber region alongside a configuration panel for selecting model name, path, domain, continent and country."}
+
+You have now successfully installed the project environment and run a notebook. To learn more about the available notebooks and how to use them, please check the [Quickstart guide](quickstart.qmd).
+

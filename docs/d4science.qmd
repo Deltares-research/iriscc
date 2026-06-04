@@ -1,0 +1,17 @@
+---
+title: "D4Science cloud environment"
+---
+
+## Registration
+
+To use the D4Science cloud environment, first register at [iriscc.d4science.org](https://iriscc.d4science.org/home). Click on "Register" and fill in the required information. After submitting the registration form, you will receive a confirmation email. Follow the instructions in the email to activate your account.
+
+## Accessing the environment
+
+Once your account is activated, log in to the D4Science portal at [iriscc.d4science.org](https://iriscc.d4science.org/home). After logging in, you will be directed to the dashboard where you can access the project environment and notebooks. To launch a JupyterLab session, click on "JupyterLab Start" in the dashboard. This will open a JupyterLab interface where you can navigate to the notebooks and start working.
+
+::: {.callout-important}
+The Flooding Risk demonstrator software is not yet pre-installed on D4Science. Once inside JupyterLab, follow the [installation instructions](installation.qmd) to install the environment manually before running any notebooks.
+:::
+
+

@@ -10,6 +10,8 @@ website:
         text: Home
       - href: installation.qmd
         text: Installation
+      - href: d4science.qmd
+        text: D4Science
       - href: quickstart.qmd
         text: Quickstart
   sidebar:
@@ -19,15 +21,16 @@ website:
         contents:
           - index.qmd
           - installation.qmd
+          - d4science.qmd
           - quickstart.qmd
-      - section: "Development"
-        contents:
-          - developers.qmd
       - section: "Models"
         contents:
           - models/sfincs.qmd
           - models/fiat.qmd
           - models/dhydro.qmd
+      - section: "Development"
+        contents:
+          - developers.qmd
 
 format:
   html:
