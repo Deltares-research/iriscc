@@ -6,10 +6,16 @@
 
 This repository contains the software behind the IRISCC **Flooding Risk demonstrator**, which addresses the risk to coastal regions from flooding caused by sea-level rise and storm surges. The demonstrator models storm events and sea-level changes to help stakeholders in insurance, finance, and infrastructure evaluate their exposure and make climate-resilient investment decisions.
 
-`iriscc` is a collection of hydrological modelling workflows, notebooks, and demonstrators built around the HydroMT ecosystem. The repository contains example setups and exploratory notebooks for model preparation, execution, and visualization using tools such as HydroMT, SFINCS, FIAT, and D-HYDRO.
+The Flooding Risk demonstrator currently contains 3 modules:
+- **Storm surge module**: simulates storm surge events based on historical data and climate projections. This module uses the [Delft3D Flexible Mesh](https://public.deltares.nl/display/OET/Delft3D+Flexible+Mesh) hydrodynamic model to simulate water levels and flow patterns during storm surge events.
+- **Coastal flooding module**: simulates coastal flooding based on the outputs of the storm surge module and sea-level rise projections. This module uses the [SFINCS](https://github.com/Deltares/SFINCS) (Simple Flood INundation Calculation Software) model to simulate flood extents and depths.
+- **Risk assessment module**: evaluates the economic and social impacts of coastal flooding based on the outputs of the coastal flooding module. This module is based on [FIAT](https://github.com/Deltares/Delft-FIAT) (Flood Impact Assessment Tool), which estimates the potential damages and losses from flooding events.
 
-The notebooks in this repository serve both as documentation and executable examples of the workflows.
+These modules can be used independently or together to assess the risks of coastal flooding under different climate change scenarios and to evaluate the effectiveness of adaptation measures. The software makes use of jupyter notebooks for interactive analysis and visualization. The following notebooks are included in this repository:
+- [`D-HYDRO/solara/IRISCC_solara_widget_DHYDRO.ipynb`](D-HYDRO/solara/IRISCC_solara_widget_DHYDRO.ipynb) — interactive Solara widget for building and running a D-HYDRO hydrodynamic model
+- [`SFINCS/solara/IRISCC_solara_widget_SFINCS.ipynb`](SFINCS/solara/IRISCC_solara_widget_SFINCS.ipynb) — interactive Solara widget for building and running a SFINCS coastal flood model
+- [`FIAT/solara/IRISCC_solara_widget_FIAT.ipynb`](FIAT/solara/IRISCC_solara_widget_FIAT.ipynb) — interactive Solara widget for running a FIAT flood risk assessment
+- [`demonstrator_solara/IRISCC_solara_widget.ipynb`](demonstrator_solara/IRISCC_solara_widget.ipynb) — combined demonstrator widget integrating all three modules
 
-## Developer guide
+The notebooks can be installed locally on windows or linux, or in the D4SCIENCE cloud environment. Please check our [documentation](https://deltares-research.github.io/iriscc/index.html) for installation instructions and usage examples.
 
-See the [developer guide](https://deltares-research.github.io/iriscc/developers.html) for instructions on setting up the environment, running notebooks, and linting.
