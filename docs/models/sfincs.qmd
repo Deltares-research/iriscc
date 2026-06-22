@@ -1,0 +1,5 @@
+---
+title: "SFINCS"
+---
+
+[SFINCS](https://github.com/Deltares/SFINCS) (Super-Fast INundation of CoastS) is an open-source reduced-complexity flood model developed by Deltares. It is designed to simulate compound flooding — combining coastal storm surge, riverine, rainfall-driven, and wave-driven processes — at regional to local scales, balancing computational efficiency with physical accuracy. Where traditional approaches either lack relevant physics or are too computationally expensive for large stretches of coastline, SFINCS is designed to run in minutes rather than days, making it well suited for scenario analysis, climate adaptation planning, and operational flood forecasting. In the IRISCC Flooding Risk demonstrator, SFINCS is used in the coastal flooding module to simulate flood extents and depths based on storm surge outputs and sea-level rise projections.

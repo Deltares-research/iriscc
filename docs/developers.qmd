@@ -1,0 +1,74 @@
+---
+title: "Developer guide"
+---
+
+## Environment setup
+
+This project uses [Pixi](https://pixi.sh) to manage dependencies and development tasks.
+
+### Install Pixi
+
+See the [Installation](installation.qmd) page for full instructions. Quick start:
+
+::: {.panel-tabset}
+
+## Linux & macOS
+
+```bash
+curl -fsSL https://pixi.sh/install.sh | sh
+```
+
+## Windows
+
+```powershell
+powershell -ExecutionPolicy Bypass -c "irm -useb https://pixi.sh/install.ps1 | iex"
+```
+
+## Homebrew
+
+```bash
+brew install pixi
+```
+
+:::
+
+Restart your shell after installation.
+
+### Install the project environment
+
+Clone the repository and install the environment:
+
+```bash
+git clone https://github.com/Deltares-research/iriscc.git
+cd iriscc
+pixi install
+```
+
+Pixi will create a reproducible environment based on the `pyproject.toml` and `pixi.lock` files.
+
+## Running notebooks
+
+Run all notebooks (executes in-place and saves outputs):
+
+```bash
+pixi run all-notebooks
+```
+
+Run a single notebook:
+
+```bash
+pixi run run-notebook <path/to/notebook.ipynb>
+```
+
+Strip outputs from all notebooks (for clean version control):
+
+```bash
+pixi run clean-notebooks
+```
+
+## Linting
+
+```bash
+pixi run install-precommit   # install pre-commit hooks (once)
+pixi run lint                # run pre-commit on all files
+```
