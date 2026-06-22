@@ -40,6 +40,8 @@ dependencies = [
     "boto3",
     "s3fs",
     "zarr",
+    "h5py",
+    "h5netcdf",
     "xugrid",
     "shapely",
     "geopandas",
@@ -63,6 +65,7 @@ default = { features = ["dev"] }
 clean-notebooks = "jupyter nbconvert --to notebook --inplace **/*.ipynb"
 all-notebooks = "jupyter nbconvert --execute --to notebook --inplace **/*.ipynb"
 run-notebook = { cmd="jupyter nbconvert --execute --to notebook --inplace {{ NOTEBOOK }}", args=["NOTEBOOK"] }
+nc-to-zarr = { cmd = "python SFINCS/scripts/nc_to_zarr.py --src {{ SRC }} --dst {{ DST }} --drop-variables projection --chunks lat=6000 lon=6000", args = ["SRC", "DST"] }
 
 [tool.pixi.feature.dev.tasks]
 install-precommit = "pre-commit install"
