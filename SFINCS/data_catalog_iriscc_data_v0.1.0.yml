@@ -2,17 +2,56 @@ meta:
   version: v0.1.0
   hydromt_version: ">=1.0a, <2"
   name: iriscc_data
-
-deltadtm:
+  
+copdem30_public:
   data_type: RasterDataset
-  version: 1.0
-  uri: https://s3.deltares.nl/iriscc/topography/delta_dtm/deltadtm_v1_1.vrt
+  version: 2021.1
+  uri: s3://copernicus-dem-30m/**/Copernicus_DSM_COG_*_DEM.tif
   driver:
     name: rasterio
     options:
       chunks:
         x: 3600
         y: 3600
+      mosaic: true
+      mosaic_kwargs:
+        method: nearest
+    filesystem:
+      protocol: s3
+      anon: true
+  metadata:
+    category: topography
+    url: https://spacedata.copernicus.eu/en/web/guest/collections/copernicus-digital-elevation-model/
+    license: https://spacedata.copernicus.eu/en/web/guest/collections/copernicus-digital-elevation-model/#Licencing
+    extent:
+      bbox:
+        West: -180.001
+        South: -90
+        East: 180.0
+        North: 84.0
+    nodata: -9999
+    crs: 4326
+  data_adapter:
+    rename:
+      copdem: elevtn
+      
+deltadtm:
+  data_type: RasterDataset
+  version: 1.0
+  uri: s3://iriscc/topography/delta_dtm/deltadtm_v1_1.vrt
+  driver:
+    name: rasterio
+    options:
+      chunks:
+        x: 3600
+        y: 3600
+    filesystem:
+      protocol: s3
+      anon: false
+      client_kwargs:
+        endpoint_url: https://s3.deltares.nl
+      key: J3lh3qbnU916sOWqJoQR
+      secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
   metadata:
     category: topography
     paper_doi: 10.1038/s41597-024-03091-9
@@ -25,7 +64,7 @@ deltadtm:
         South: -60.0
         East: 180.0
         North: 80.0
-    crs: 4326
+    crs: 9518
   data_adapter:
     rename:
       deltadtm: elevtn
@@ -33,13 +72,20 @@ deltadtm:
 gcn250:
   data_type: RasterDataset
   version: 1
-  uri: https://s3.deltares.nl/iriscc/landuse/gcn250/GCN250_*.tif
+  uri: s3://iriscc/landuse/gcn250/GCN250_*.tif
   driver:
     name: rasterio
     options:
       chunks:
         x: 3600
         y: 3600
+    filesystem:
+      protocol: s3
+      anon: false
+      client_kwargs:
+        endpoint_url: https://s3.deltares.nl
+      key: J3lh3qbnU916sOWqJoQR
+      secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
   metadata:
     category: soil
     paper_doi: 10.1038/s41597-019-0155-x
@@ -62,13 +108,20 @@ gcn250:
 gebco:
   data_type: RasterDataset
   version: 2020
-  uri: https://s3.deltares.nl/iriscc/bathymetry/gebco/gebco.vrt
+  uri: s3://iriscc/bathymetry/gebco/gebco.vrt
   driver:
     name: rasterio
     options:
       chunks:
         x: 3600
         y: 3600
+    filesystem:
+      protocol: s3
+      anon: false
+      client_kwargs:
+        endpoint_url: https://s3.deltares.nl
+      key: J3lh3qbnU916sOWqJoQR
+      secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
   metadata:
     category: topography
     paper_doi: 10.5285/a29c5465-b138-234d-e053-6c86abc040b9
@@ -91,13 +144,20 @@ gebco:
 globcover:
   data_type: RasterDataset
   version: 2.3
-  uri: https://s3.deltares.nl/iriscc/landuse/globcover/GLOBCOVER_L4_200901_200912_V2.3.tif
+  uri: s3://iriscc/landuse/globcover/GLOBCOVER_L4_200901_200912_V2.3.tif
   driver:
     name: rasterio
     options:
       chunks:
         x: 3600
         y: 3600
+    filesystem:
+      protocol: s3
+      anon: false
+      client_kwargs:
+        endpoint_url: https://s3.deltares.nl
+      key: J3lh3qbnU916sOWqJoQR
+      secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
   metadata:
     category: landuse
     paper_doi: 10.1594/PANGAEA.787668
@@ -112,17 +172,21 @@ globcover:
         North: 90.001
     crs: 4326
 
-hydro_basin_atlas_level12_s3:
+hydro_basin_atlas_level12:
   data_type: GeoDataFrame
   version: 10
-  uri: https://s3.deltares.nl/iriscc/hydrography/hydro_atlas/basin_atlas_v10.gpkg
+  uri: s3://iriscc/hydrography/hydro_atlas/basin_atlas_v10.gpkg
   driver:
     name: pyogrio
     options:
       layer: BasinATLAS_v10_lev12
     filesystem:
       protocol: s3
-      anon: true
+      anon: false
+      client_kwargs:
+        endpoint_url: https://s3.deltares.nl
+      key: J3lh3qbnU916sOWqJoQR
+      secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
   metadata:
     category: hydrography
     notes: renaming and units might require some revision
@@ -138,16 +202,64 @@ hydro_basin_atlas_level12_s3:
         North: 83.626
     crs: 4326
 
+merit:
+  data_type: RasterDataset
+  version: 1.0.3
+  uri: s3://iriscc/topography/merit/merit.zarr
+  driver:
+    name: raster_xarray
+    options:
+      drop_variables: projection
+      chunks:
+        lat: 6000
+        lon: 6000
+      storage_options:
+        anon: false
+        key: J3lh3qbnU916sOWqJoQR
+        secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
+        client_kwargs:
+          endpoint_url: https://s3.deltares.nl
+    filesystem:
+      protocol: s3
+      anon: false
+      client_kwargs:
+        endpoint_url: https://s3.deltares.nl
+      key: J3lh3qbnU916sOWqJoQR
+      secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
+  metadata:
+    category: topography
+    paper_doi: 10.1002/2017GL072874
+    paper_ref: Yamazaki et al. (2018)
+    url: http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/
+    license: CC-BY-NC 4.0 or ODbL 1.0
+    extent:
+      bbox:
+        West: -180
+        South: -90
+        East: 180.0
+        North: 90.0
+    crs: 4326
+  data_adapter:
+    rename:
+      elevation: elevtn
+      
 merit_hydro:
   data_type: RasterDataset
   version: 1.0
-  uri: https://s3.deltares.nl/iriscc/topography/merit_hydro/*.vrt
+  uri: s3://iriscc/topography/merit_hydro/*.vrt
   driver:
     name: rasterio
     options:
       chunks:
         x: 6000
         y: 6000
+    filesystem:
+      protocol: s3
+      anon: false
+      client_kwargs:
+        endpoint_url: https://s3.deltares.nl
+      key: J3lh3qbnU916sOWqJoQR
+      secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
   metadata:
     category: topography
     paper_doi: 10.1029/2019WR024873
@@ -175,7 +287,7 @@ merit_hydro:
       upg: upgrid
       wth: rivwth
 
-era5_hourly:
+era5_hourly_public:
   data_type: RasterDataset
   uri: https://api.earthdatahub.destine.eu/era5/reanalysis-era5-single-levels-v0.zarr
   driver:
