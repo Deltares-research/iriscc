@@ -112,14 +112,28 @@ def main(argv: list[str] | None = None) -> int:
         engine=args.engine,
         drop_variables=args.drop_variables,
     )
-
+    
     chunks = _parse_chunks(args.chunks)
-    if chunks:
-        print(f"[nc_to_zarr] rechunking -> {chunks}", flush=True)
-        ds = ds.chunk(chunks)
-        # Zarr requires consistent chunk encoding; clear inherited per-var chunks.
-        for v in ds.variables:
-            ds[v].encoding.pop("chunks", None)
+
+    print(f"[nc_to_zarr] reading  {args.src}  (engine={args.engine}, chunks={chunks})", flush=True)
+    src_store = _make_store(args.src, write=False, fs_kwargs=fs_kwargs)
+    ds = xr.open_dataset(
+        src_store,
+        engine=args.engine,
+        drop_variables=args.drop_variables,
+        chunks=chunks or {},          # <-- dask-backed lazy read; {} = single chunk per var but still lazy
+    )
+    # Drop stale per-variable chunk encoding so to_zarr uses the dask chunks
+    for v in ds.variables:
+        ds[v].encoding.pop("chunks", None)
+    
+    #chunks = _parse_chunks(args.chunks)
+    #if chunks:
+    #    print(f"[nc_to_zarr] rechunking -> {chunks}", flush=True)
+    #    ds = ds.chunk(chunks)
+    #    # Zarr requires consistent chunk encoding; clear inherited per-var chunks.
+    #    for v in ds.variables:
+    #        ds[v].encoding.pop("chunks", None)
 
     print(f"[nc_to_zarr] writing  {args.dst}  (zarr_format={args.zarr_format})", flush=True)
     dst_store = _make_store(args.dst, write=True, fs_kwargs=fs_kwargs)
