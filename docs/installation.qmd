@@ -78,3 +78,12 @@ This will launch Jupyter Notebook with the FIAT widget notebook and opens it in 
 
 You have now successfully installed the project environment and run a notebook. To learn more about the available notebooks and how to use them, please check the [Quickstart guide](quickstart.qmd).
 
+## Using vscode
+
+To use vscode in combination with the pixi environment created above, you can start vscode as:
+
+```bash
+pixi run code .
+```
+
+In this way vscode will inherit the environment variables to find the kernel. You can now select the kernel named "Python (iriscc)" in the notbook.
