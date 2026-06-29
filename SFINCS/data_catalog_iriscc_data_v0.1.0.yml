@@ -213,12 +213,6 @@ merit:
       chunks:
         lat: 6000
         lon: 6000
-      storage_options:
-        anon: false
-        key: J3lh3qbnU916sOWqJoQR
-        secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
-        client_kwargs:
-          endpoint_url: https://s3.deltares.nl
     filesystem:
       protocol: s3
       anon: false
@@ -287,7 +281,7 @@ merit_hydro:
       upg: upgrid
       wth: rivwth
 
-era5_hourly_public:
+era5_hourly_destine:
   data_type: RasterDataset
   uri: https://api.earthdatahub.destine.eu/era5/reanalysis-era5-single-levels-v0.zarr
   driver:
