@@ -20,9 +20,9 @@ classifiers = [
 ]
 requires-python = ">=3.10,<3.13"
 dependencies = [
-    "hydromt>=1.3.1",
-    "hydromt_fiat==1.0.0rc4",
-    "hydromt_sfincs==2.0.0rc1",
+    "hydromt>=1.4.1",
+    "hydromt_fiat==1.0.0rc5",
+    "hydromt_sfincs==2.0.0rc3",
     "dfm_tools==0.45.0",
     "hydrolib",
     "hydrolib-core",
@@ -69,7 +69,6 @@ clean-notebooks = "jupyter nbconvert --to notebook --inplace **/*.ipynb"
 all-notebooks = "jupyter nbconvert --execute --to notebook --inplace **/*.ipynb"
 run-notebook = { cmd="jupyter nbconvert --execute --to notebook --inplace {{ NOTEBOOK }}", args=["NOTEBOOK"] }
 # Serve the SFINCS Solara app behind the d4science JupyterHub proxy.
-# Update the --root-path username if your hub user differs from 'gundula.winter'.
 solara-sfincs = { cmd = "echo \"Open this in your browser: https://jupyterhub.d4science.org/user/$JUPYTERHUB_USER/proxy/8765/\" && solara run SFINCS/solara/app_sfincs.py --host=0.0.0.0 --port=8765 --root-path=/user/$JUPYTERHUB_USER/proxy/8765", env = { FORWARDED_ALLOW_IPS = "*", UVICORN_PROXY_HEADERS = "1" } }
 nc-to-zarr = { cmd = "python SFINCS/scripts/nc_to_zarr.py --src {{ SRC }} --dst {{ DST }} --drop-variables projection --chunks lat=6000 lon=6000", args = ["SRC", "DST"] }
 
