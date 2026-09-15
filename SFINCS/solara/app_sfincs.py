@@ -16,6 +16,7 @@
 # shared across sessions if multiple people open the app at once.
 
 import solara
+from solara.lab import task
 from ipyleaflet import (
     Map,
     basemaps,
@@ -386,6 +387,7 @@ elev_plot_done = solara.reactive(False)
 plot_elev_status = solara.reactive("Idle")
 
 
+@task
 def plot_elev():
     global scatter_layer_g, legend_elev  # , elev_layer
     plot_elev_status.set("Plotting")
@@ -541,6 +543,7 @@ actc_plot_done = solara.reactive(False)
 plot_actc_status = solara.reactive("Idle")
 
 
+@task
 def plot_actc():
     global mask_active, msk, datasets_dep
     plot_actc_status.set("Plotting")
@@ -719,6 +722,7 @@ wlbnd_plot_done = solara.reactive(False)
 plot_wlbnd_status = solara.reactive("Idle")
 
 
+@task
 def plot_wlbnd():
     global waterlevel_bnd
     plot_wlbnd_status.set("Plotting")
@@ -879,6 +883,7 @@ rInflP_layer = solara.reactive(LayerGroup())
 rinflp_plot_done = solara.reactive(False)
 
 
+@task
 def plot_rInflP():
     plot_rInflP_status.set("Plotting")
     global src_river_layer, riverinflow_layers
@@ -1111,6 +1116,7 @@ info_retrieved_done = solara.reactive(False)
 nr_subgrid_pixels = solara.reactive(6)
 
 
+@task
 def plot_zzmin():
     global scatter_layer_sg
     zzmin_status.set("Running")
