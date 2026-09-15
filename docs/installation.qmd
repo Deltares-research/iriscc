@@ -2,7 +2,7 @@
 title: "Installation"
 ---
 
-This page provides instructions for installing the project environment and running the notebooks locally on your machine (or on a remote server that you have access to). We also offer a cloud-based environment on D4SCIENCE where you can run the notebooks without any local installation. Please check our [D4SCIENCE guide](d4science.qmd) for more details on the D4SCIENCE environment and how to access it.
+This page provides instructions for installing the project environment and running the notebooks locally on your machine (or on a remote server that you have access to). We also offer a cloud-based environment on D4Science where you can run the notebooks without any local installation. Please check our [D4Science guide](d4science.qmd) for more details on the D4Science environment and how to access it.
 
 This project uses [Pixi](https://pixi.prefix.dev) to manage dependencies. Install Pixi first, then install the project environment.
 
@@ -42,6 +42,12 @@ brew install pixi
 
 The installer places the `pixi` binary in `~/.pixi/bin` (Linux/macOS) or `%UserProfile%\.pixi\bin` (Windows) and updates your `PATH` automatically. Restart your shell afterwards.
 
+If you're using D4Science environment, specify the `pixi` binary path manually in the terminal:
+
+```bash
+export PATH="/home/jovyan/.pixi/bin:$PATH"
+```
+
 ## Install the project environment
 
 Clone the repository and install:
@@ -66,7 +72,7 @@ After refreshing JupyterLab, `Python (iriscc)` will appear in the kernel selecto
 
 ## Running a notebook
 
-Start a notebook directly using Pixi, for example:
+Start a notebook directly using Pixi, for example (only when working locally):
 
 ```bash
 pixi run jupyter notebook FIAT/solara/IRISCC_solara_widget_FIAT.ipynb
