@@ -117,18 +117,25 @@ _TAB_KEYS = [
 
 
 def init_widgets():
-    """Create the map and layer groups once, after import (per component session)."""
+    """Create the map and layer groups for this session.
+
+    Must run unconditionally on every call: `m`/`tab_layers` are module
+    globals, and Solara closes a session's widgets when that session ends.
+    A previous `if m is None` guard here made a new session (e.g. a
+    browser reload while the server process keeps running) reuse the
+    prior session's already-closed widgets, raising
+    "RuntimeError: Widget ... has been closed" on the first add_layer.
+    """
     global m, tab_layers
-    if m is None:
-        m = Map(
-            center=(53.5, -0.5),
-            zoom=8,
-            scroll_wheel_zoom=True,
-            basemap=basemaps.OpenStreetMap.Mapnik,
-        )
-        tab_layers = {k: LayerGroup() for k in _TAB_KEYS}
-        current_layer_group.set(tab_layers["Config"])
-        m.on_interaction(handle_map_click)
+    m = Map(
+        center=(53.5, -0.5),
+        zoom=8,
+        scroll_wheel_zoom=True,
+        basemap=basemaps.OpenStreetMap.Mapnik,
+    )
+    tab_layers = {k: LayerGroup() for k in _TAB_KEYS}
+    current_layer_group.set(tab_layers["Config"])
+    m.on_interaction(handle_map_click)
     return m
 
 
