@@ -175,9 +175,20 @@ globcover:
 glofas_era5:
   data_type: RasterDataset
   version: 31
-  uri: s3://iriscc/hydro/glofas_era5/glofas_v31_2013.zarr
+  uri: s3://iriscc/hydro/glofas_era5/glofas_v31_{year}.zarr
   driver:
     name: raster_xarray
+    options:
+      chunks:
+        time: 180
+        latitude: 150
+        longitude: 360
+      consolidated: false
+      storage_options:
+        key: J3lh3qbnU916sOWqJoQR
+        secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
+        client_kwargs:
+          endpoint_url: https://s3.deltares.nl
     filesystem:
       protocol: s3
       anon: false
@@ -205,7 +216,7 @@ glofas_era5:
     crs: 4326
   data_adapter:
     rename:
-      discharge: dis24
+      dis24: discharge
 
 glofas_uparea:
   data_type: RasterDataset
