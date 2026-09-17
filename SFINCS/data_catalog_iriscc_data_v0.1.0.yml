@@ -172,6 +172,77 @@ globcover:
         North: 90.001
     crs: 4326
 
+glofas_era5:
+  data_type: RasterDataset
+  version: 31
+  uri: s3://iriscc/hydro/glofas_era5/glofas_v31_2013.zarr
+  driver:
+    name: raster_xarray
+    filesystem:
+      protocol: s3
+      anon: false
+      client_kwargs:
+        endpoint_url: https://s3.deltares.nl
+      key: J3lh3qbnU916sOWqJoQR
+      secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
+  metadata:
+    category: hydro
+    notes: Extracted from Copernicus Climate Data Store
+    paper_doi: 10.5194/essd-12-2043-2020
+    paper_ref: Harrigan et al. (2020)
+    processing_script: hydro/glofas_era5/glofas_cds_get.py
+    url: https://doi.org/10.24381/cds.a4fdd6b9
+    license: https://cds.climate.copernicus.eu/api/v2/terms/static/cems-floods.pdf
+    extent:
+      bbox:
+        West: -180
+        South: -60
+        East: 180.0
+        North: 90.0
+      time_range:
+        start: "1980-01-01"
+        end: "2021-05-31"
+    crs: 4326
+  data_adapter:
+    rename:
+      discharge: dis24
+
+glofas_uparea:
+  data_type: RasterDataset
+  version: 31
+  uri: s3://iriscc/hydro/glofas_era5/glofas_v31_uparea.tif
+  driver:
+    name: rasterio
+    options:
+      chunks:
+        x: 150
+        y: 360
+    filesystem:
+      protocol: s3
+      anon: false
+      client_kwargs:
+        endpoint_url: https://s3.deltares.nl
+      key: J3lh3qbnU916sOWqJoQR
+      secret: EZU4YW3YJPfRpMiAdLrwWg6yTC96gqCcs6HSppsr
+  metadata:
+    category: hydro
+    notes: Extracted from Copernicus Climate Data Store
+    paper_doi: 10.5194/essd-12-2043-2020
+    paper_ref: Harrigan et al. (2020)
+    url: https://doi.org/10.24381/cds.a4fdd6b9
+    license: https://cds.climate.copernicus.eu/api/v2/terms/static/cems-floods.pdf
+    extent:
+      bbox:
+        West: -180
+        South: -60
+        East: 180.0
+        North: 90.0
+  data_adapter:
+    unit_mult:
+      uparea: 1e-6
+    rename:
+      glofas_v31_uparea: uparea
+
 hydro_basin_atlas_level12:
   data_type: GeoDataFrame
   version: 10
@@ -334,3 +405,36 @@ era5_hourly_destine:
     unit_add:
       temp: -273.15
       temp_dew: -273.15
+
+era5_ocean_waves:
+  data_type: RasterDataset
+  uri: https://api.earthdatahub.destine.eu/era5/reanalysis-era5-single-levels-ocean-v0.zarr
+  driver:
+    name: raster_xarray
+    filesystem:
+      protocol: https
+    options:
+      decode_times: true
+      storage_options:
+        client_kwargs:
+          trust_env: true
+  metadata:
+    category: ocean
+    notes: Extracted from Earth Data Hub
+    paper_doi: 10.1002/qj.3803
+    paper_ref: Hersbach et al. (2019)
+    url: https://earthdatahub.destine.eu/collections/era5/datasets/reanalysis-era5-single-levels-ocean
+    license: CC-BY-4.0
+    extent:
+      bbox:
+        West: -0.25
+        South: -90.25
+        East: 359.75
+        North: 90.25
+      time_range:
+        start: '1940-01-01'
+        end: 'present'
+    crs: 4326
+  data_adapter:
+    rename:
+      valid_time: time

@@ -35,6 +35,7 @@ dependencies = [
     "folium",
     "ipyleaflet",
     "ipywidgets",
+    "ipyvuetify==1.11.3",
     "xarray",
     "fsspec",
     "boto3",
