@@ -1,0 +1,127 @@
+meta:
+  version: v2025.2
+  name: hydromt-fiat_global-data
+
+jrc_vulnerability_curves:
+  data_type: DataFrame
+  uri: vulnerability/jrc_damage_functions.csv
+  driver:
+    name: pandas
+    filesystem: local
+    options:
+      header: null
+  metadata:
+    category: vulnerability
+    notes: JRC depth-damage functions for flooding, processed into a handy format for HydroMT-FIAT.
+    url: https://publications.jrc.ec.europa.eu/repository/handle/JRC105688
+    paper_ref: Huizinga, J., De Moel, H. and Szewczyk, W., Global flood depth-damage functions - Methodology and the database with guidelines, EUR 28552 EN, Publications Office of the European Union, Luxembourg, 2017, ISBN 978-92-79-67781-6, doi:10.2760/16510, JRC105688.
+    paper_doi: https://dx.doi.org/10.2760/16510
+
+jrc_vulnerability_curves_linking:
+  data_type: DataFrame
+  uri: vulnerability/jrc_damage_functions_linking.csv
+  driver:
+    name: pandas
+    filesystem: local
+  metadata:
+    category: vulnerability
+    notes: Default linking table for the JRC damage functions (e.g., the residential damage function links to residential buildings).
+    
+jrc_vulnerability_curves_linking_no_subtype:
+  data_type: DataFrame
+  uri: vulnerability/jrc_damage_functions_linking_no_subtype.csv
+  driver:
+    name: pandas
+    filesystem: local
+  metadata:
+    category: vulnerability
+    notes: Same as 'vulnerability_curves_linking' but with no subtyping.
+
+jrc_damage_values:
+  data_type: DataFrame
+  uri: exposure/jrc_damage_values.csv
+  driver:
+    name: pandas
+    filesystem: local
+  metadata:
+    category: exposure
+    notes: Base damage values from the JRC publicated Excel from the tab "MaxDamage-Data", processed into a handy format for HydroMT-FIAT.
+    url: https://publications.jrc.ec.europa.eu/repository/handle/JRC105688
+    paper_ref: Huizinga, J., De Moel, H. and Szewczyk, W., Global flood depth-damage functions - Methodology and the database with guidelines, EUR 28552 EN, Publications Office of the European Union, Luxembourg, 2017, ISBN 978-92-79-67781-6, doi:10.2760/16510, JRC105688.
+    paper_doi: https://dx.doi.org/10.2760/16510
+
+osm_amenity:
+  uri: amenity
+  data_type: GeoDataFrame
+  uri_resolver: osm_resolver
+  driver:
+    name: osm
+    options:
+      geom_type:
+        - MultiPolygon
+        - Polygon
+
+osm_amenity_link:
+  data_type: DataFrame
+  uri: exposure/osm_amenity-jrc_map.csv
+  driver:
+    name: pandas
+    filesystem: local
+  metadata:
+    notes: Made by S. Rautenbach
+
+osm_buildings:
+  uri: building
+  data_type: GeoDataFrame
+  uri_resolver: osm_resolver
+  driver:
+    name: osm
+    options:
+      geom_type:
+        - MultiPolygon
+        - Polygon
+
+osm_buildings_link:
+  data_type: DataFrame
+  uri: exposure/osm_buildings-jrc_map.csv
+  driver:
+    name: pandas
+    filesystem: local
+  metadata:
+    notes: Made by S. Rautenbach
+
+osm_landuse:
+  uri: landuse
+  data_type: GeoDataFrame
+  uri_resolver: osm_resolver
+  driver:
+    name: osm
+    options:
+      geom_type:
+        - MultiPolygon
+        - Polygon
+
+osm_landuse_link:
+  data_type: DataFrame
+  uri: exposure/osm_landuse-jrc_map.csv
+  driver:
+    name: pandas
+    filesystem: local
+  metadata:
+    notes: Made by S. Rautenbach
+
+osm_roads:
+  uri: highway
+  data_type: GeoDataFrame
+  uri_resolver: osm_resolver
+  driver:
+    name: osm
+    options:
+      geom_type:
+      - LineString
+      - MultiLineString
+      tags:
+      - motorway
+      - primary
+      - secondary
+      - tertiary
