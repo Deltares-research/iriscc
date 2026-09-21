@@ -25,12 +25,27 @@ pixi run python -m ipykernel install --user --name flood-demo --display-name "Py
 Refresh JupyterLab and select `Python (flood-demo)` as the kernel when opening a notebook.
 
 ::: {.callout-important}
-For Solara widgets and maps to render correctly, the D4Science JupyterLab server requires the following packages to be installed in its server-side Python environment. If widgets fail to load, ask the D4Science admins to run:
+For Solara widgets and maps to render correctly in the notebooks, the D4Science JupyterLab server requires the following packages to be installed in its server-side Python environment. If widgets fail to load in the notebooks, run the following commands in the terminal:
 
 ```bash
-conda install -c conda-forge ipyvuetify ipyvue ipyleaflet
+pixi run pip install "ipyvuetify==1.11.3"
+pixi run pip install ipyleaflet
 ```
+
+Then refresh the webpage / kernel, and try again
 :::
+
+Alternatively, you can also use the `pixi run` command to start JupyterLab with the correct environment and kernel already selected:
+
+```bash
+pixi run jupyter lab
+```
+
+`Pixi` environment also includes the function to start the Solara App of the model-builder notebooks directly in the correct environment, without the need to start JupyterLab first. You can run the following command in the terminal:
+
+```bash
+pixi run solara-sfincs
+```
 
 ::: {.callout-tip}
 If you see errors about missing extensions (e.g. `ipyvuetify` or `ipyvue`) after selecting the kernel, try this sequence:

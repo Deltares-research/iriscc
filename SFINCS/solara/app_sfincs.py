@@ -16,6 +16,7 @@
 # shared across sessions if multiple people open the app at once.
 
 import solara
+from solara.lab import task
 from ipyleaflet import (
     Map,
     basemaps,
@@ -116,18 +117,25 @@ _TAB_KEYS = [
 
 
 def init_widgets():
-    """Create the map and layer groups once, after import (per component session)."""
+    """Create the map and layer groups for this session.
+
+    Must run unconditionally on every call: `m`/`tab_layers` are module
+    globals, and Solara closes a session's widgets when that session ends.
+    A previous `if m is None` guard here made a new session (e.g. a
+    browser reload while the server process keeps running) reuse the
+    prior session's already-closed widgets, raising
+    "RuntimeError: Widget ... has been closed" on the first add_layer.
+    """
     global m, tab_layers
-    if m is None:
-        m = Map(
-            center=(53.5, -0.5),
-            zoom=8,
-            scroll_wheel_zoom=True,
-            basemap=basemaps.OpenStreetMap.Mapnik,
-        )
-        tab_layers = {k: LayerGroup() for k in _TAB_KEYS}
-        current_layer_group.set(tab_layers["Config"])
-        m.on_interaction(handle_map_click)
+    m = Map(
+        center=(53.5, -0.5),
+        zoom=8,
+        scroll_wheel_zoom=True,
+        basemap=basemaps.OpenStreetMap.Mapnik,
+    )
+    tab_layers = {k: LayerGroup() for k in _TAB_KEYS}
+    current_layer_group.set(tab_layers["Config"])
+    m.on_interaction(handle_map_click)
     return m
 
 
@@ -386,6 +394,7 @@ elev_plot_done = solara.reactive(False)
 plot_elev_status = solara.reactive("Idle")
 
 
+@task
 def plot_elev():
     global scatter_layer_g, legend_elev  # , elev_layer
     plot_elev_status.set("Plotting")
@@ -541,6 +550,7 @@ actc_plot_done = solara.reactive(False)
 plot_actc_status = solara.reactive("Idle")
 
 
+@task
 def plot_actc():
     global mask_active, msk, datasets_dep
     plot_actc_status.set("Plotting")
@@ -719,6 +729,7 @@ wlbnd_plot_done = solara.reactive(False)
 plot_wlbnd_status = solara.reactive("Idle")
 
 
+@task
 def plot_wlbnd():
     global waterlevel_bnd
     plot_wlbnd_status.set("Plotting")
@@ -879,6 +890,7 @@ rInflP_layer = solara.reactive(LayerGroup())
 rinflp_plot_done = solara.reactive(False)
 
 
+@task
 def plot_rInflP():
     plot_rInflP_status.set("Plotting")
     global src_river_layer, riverinflow_layers
@@ -1111,6 +1123,7 @@ info_retrieved_done = solara.reactive(False)
 nr_subgrid_pixels = solara.reactive(6)
 
 
+@task
 def plot_zzmin():
     global scatter_layer_sg
     zzmin_status.set("Running")
